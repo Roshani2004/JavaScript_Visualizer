@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Visualizer 9000</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>⚡ JavaScript Visualizer<span>accurate runtime trace</span></h1>
+    <div class="header-controls">
+      <select id="exampleSelect">
+        <option value="ig">Instagram login</option>
+        <option value="ex1">Basic async</option>
+        <option value="ex2">Promise chain</option>
+        <option value="ex3">Multiple timeouts</option>
+        <option value="ex4">Mixed micro/macro</option>
+        <option value="ex5">Nested promise</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="editor-panel">
+      <div class="panel-header">
+        <h2>📝 Code</h2>
+        <div class="btn-row">
+          <button class="edit" id="editBtn">✎ Edit</button>
+        </div>
+      </div>
+      <div class="code-container" id="codeContainer"></div>
+      <textarea class="edit-area" id="codeInput" spellcheck="false" style="display:none;"></textarea>
+
+      <div class="btn-row">
+        <button class="primary" id="runBtn">▶ Run</button>
+        <button class="next" id="nextBtn" disabled>⏭ Next Step</button>
+        <button id="resetBtn">⟲ Reset</button>
+        <button id="autoBtn" disabled>⏯ Auto</button>
+      </div>
+      <div class="explanation" id="explanation">
+        <div class="step-label">Ready</div>
+        <div>Click <code>Run</code> to load your code, then use <code>Next Step</code> to walk through each line.</div>
+      </div>
+      <div class="progress-info" id="progressInfo"></div>
+    </div>
+
+    <div class="visualizer-panel">
+      <div class="grid-2">
+        <div class="card" id="stackCard">
+          <div class="card-header">📚 Call Stack <span class="badge" id="stackBadge">0</span></div>
+          <div class="card-body" id="callStack"><div class="empty">empty</div></div>
+        </div>
+        <div class="card" id="webapiCard">
+          <div class="card-header">🌐 Web APIs <span class="badge" id="webapiBadge">0</span></div>
+          <div class="card-body" id="webApiContainer"><div class="empty">no active APIs</div></div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card" id="macroCard">
+          <div class="card-header">📦 Task Queue <span class="badge" id="macroBadge">0</span></div>
+          <div class="card-body" id="macroQueue"><div class="empty">empty</div></div>
+        </div>
+        <div class="card" id="microCard">
+          <div class="card-header">⚡ Microtask Queue <span class="badge" id="microBadge">0</span></div>
+          <div class="card-body" id="microQueue"><div class="empty">empty</div></div>
+        </div>
+      </div>
+      <div class="event-loop-bar" id="eventLoopBar">
+        <div class="loop-info">
+          <div class="pulse" id="loopPulse"></div>
+          <span>Event Loop</span>
+        </div>
+        <div class="loop-status" id="eventloopStatus">idle</div>
+      </div>
+      <div class="console-output" id="consoleOutput">
+        <div class="line sys">// console output will appear here</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
